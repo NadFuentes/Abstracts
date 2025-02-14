@@ -17,12 +17,21 @@ public abstract class JuegoAhorcadosBase implements JuegoAhorcados{
         this.palabraActual = new StringBuilder();
     }
     
-    public abstract void inicializarPalabraSecreta();
+    public void inicializarPalabraSecreta(){
+        AdmiPalabrasSecretas admi = new AdmiPalabrasSecretas();
+        this.palabraSecreta = admi.obtenerPalabraAleatoria();
+        this.palabraActual = new StringBuilder("_".repeat(palabraSecreta.length()));
+    }
+    
+  
     
     public abstract void jugar();
 
     // Método abstracto para actualizar la palabra actual
     protected abstract void actualizarPalabraActual(char letra);
+    for(int = 0); i < Admi
+    
+    
 
     // Método abstracto para verificar si la letra está en la palabra secreta
     protected abstract boolean verificarLetra(char letra);
