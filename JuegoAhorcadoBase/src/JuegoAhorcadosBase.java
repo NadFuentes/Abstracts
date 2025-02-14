@@ -7,7 +7,7 @@
  *
  * @author Nadiesda Fuentes
  */
-public abstract class JuegoAhorcadosBase implements JuegoAhorcados{
+abstract class JuegoAhorcadosBase implements JuegoAhorcados{
     protected String palabraSecreta;
     protected StringBuilder palabraActual;
     protected int intentos;
@@ -28,8 +28,13 @@ public abstract class JuegoAhorcadosBase implements JuegoAhorcados{
     public abstract void jugar();
 
     // Método abstracto para actualizar la palabra actual
-    protected abstract void actualizarPalabraActual(char letra);
-    for(int = 0); i < Admi
+    protected void actualizarPalabraActual(char letra);
+    for(int i= 0; i < palabraSecreta.length(); i++){
+    if (palabraSecreta.charAt(i)== letra){
+        palabraActual.setCharAt(i, letra));
+   }
+  }
+}
     
     
 
@@ -37,5 +42,6 @@ public abstract class JuegoAhorcadosBase implements JuegoAhorcados{
     protected abstract boolean verificarLetra(char letra);
 
     // Método abstracto para verificar si el jugador ha ganado
-    protected abstract boolean hasGanado();    
+    protected boolean hasGanado(){
+      return palabraActual.indexOf("_")== -1;
 }
