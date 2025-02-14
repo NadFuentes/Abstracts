@@ -18,8 +18,8 @@ abstract class JuegoAhorcadosBase implements JuegoAhorcado{
     }
     
     public void inicializarPalabraSecreta(){
-        AdmiPalabrasSecretas admi = new AdmiPalabrasSecretas();
-        this.palabraSecreta = admi.obtenerPalabraAleatoria();
+        AdminPalabrasSecretas admi = new AdminPalabrasSecretas();
+        this.palabraSecreta = admi.seleccionarPalabraAzar();
         this.palabraActual = new StringBuilder("_".repeat(palabraSecreta.length()));
     }
     
@@ -28,10 +28,10 @@ abstract class JuegoAhorcadosBase implements JuegoAhorcado{
     public abstract void jugar();
 
     // Método abstracto para actualizar la palabra actual
-    protected void actualizarPalabraActual(char letra);
+    protected void actualizarPalabraActual(char letra){
     for(int i= 0; i < palabraSecreta.length(); i++){
     if (palabraSecreta.charAt(i)== letra){
-        palabraActual.setCharAt(i, letra));
+        palabraActual.setCharAt(i, letra);
    }
   }
 }
@@ -44,4 +44,4 @@ abstract class JuegoAhorcadosBase implements JuegoAhorcado{
     // Método abstracto para verificar si el jugador ha ganado
     protected boolean hasGanado(){
       return palabraActual.indexOf("_")== -1;
-}
+}}

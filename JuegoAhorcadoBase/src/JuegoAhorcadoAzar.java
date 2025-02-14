@@ -14,8 +14,7 @@ public class JuegoAhorcadoAzar extends JuegoAhorcadoBase{
     String palabrasPosibles[] = {"perro", "gato", "caminadora", "ingenieria", "sistemas", "abstracto"};
     Random random = new Random();
     
-    public JuegoAhorcadoAzar(){
-    }
+    
 
     @Override
     public void inicializarPalabraSecreta() {
@@ -24,10 +23,10 @@ public class JuegoAhorcadoAzar extends JuegoAhorcadoBase{
     intentos = 6; 
     }
 
-    @Override
     public void jugar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      
     }
+
 
     @Override
     protected void actualizarPalabraActual(char letra) {

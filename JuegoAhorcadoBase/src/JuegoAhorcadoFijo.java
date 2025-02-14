@@ -12,17 +12,21 @@ import java.util.Set;
  */
 public class JuegoAhorcadoFijo extends JuegoAhorcadoBase{
     private final String palabraSecretaFija;
+    GUI gui = new GUI();
     
     public JuegoAhorcadoFijo(String palabraSecretaFija){
     this.palabraSecretaFija = palabraSecretaFija.toUpperCase();
-    }
+    inicializarPalabraSecreta();
+}
     
     @Override
     public void jugar() {
         
-        
+    
     }
 
+       
+    
     @Override
     protected void actualizarPalabraActual(char letra) {
             for(int i=0; i<palabraSecreta.length(); i ++){

@@ -14,12 +14,12 @@ import java.awt.event.ActionListener;
 
 public class GUI extends JFrame {
     private AdminPalabrasSecretas admin;
-    private JuegoAhorcadoFijo juegoFijo;
-    private JuegoAhorcadoAzar juegoAzar;
+    private JuegoAhorcadoBase juegoFijo;
+    private JuegoAhorcadoBase juegoAzar = new JuegoAhorcadoAzar();
     private JTextArea areaJuego;
     private JTextField campoLetra;
     private JButton botonProbarLetra;
-    private JuegoAhorcadosBase juego;
+    private JuegoAhorcadoBase juego;
 
     public GUI() {
         setTitle("Juego del Ahorcado");
@@ -47,33 +47,34 @@ public class GUI extends JFrame {
         botonFijo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                juegoFijo = new JuegoAhorcadoFijo("java");
-                iniciarJuego(juegoFijo);
+                String palabra = JOptionPane.showInputDialog(null, "Ingrese una palabra para el juego:", "Palabra Fija", JOptionPane.PLAIN_MESSAGE);
+                
+                if (palabra != null && !palabra.trim().isEmpty()) {
+                    juegoFijo = new JuegoAhorcadoFijo(palabra);
+                    iniciarJuego(juegoFijo);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor, ingrese una palabra válida.");
+                }
             }
         });
 
-        
         botonAzar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String palabra = admin.seleccionarPalabraAzar();
-                juegoAzar = new JuegoAhorcadoAzar(palabra);
-                iniciarJuego(juegoAzar);
+                juego = new JuegoAhorcadoAzar();
+                iniciarJuego(juego);
             }
         });
 
-        
         botonProbarLetra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String letra = campoLetra.getText().toLowerCase();
                 if (letra.length() == 1) {
-                    if (juegoFijo != null) {
-                        juegoFijo.jugar(letra.charAt(0));
-                        actualizarEstado(juegoFijo);
-                    } else if (juegoAzar != null) {
-                        juegoAzar.jugar(letra.charAt(0));
-                        actualizarEstado(juegoAzar);
+                    if (juego != null) {
+                        juego.jugar();
+                        actualizarEstado(juego);
                     }
                     campoLetra.setText("");
                 } else {
@@ -96,12 +97,13 @@ public class GUI extends JFrame {
     }
 
     private void iniciarJuego(JuegoAhorcadoBase juego) {
+        this.juego = juego;
         areaJuego.setText("¡Juego iniciado!\n" + juego.palabraActual);
         campoLetra.setEnabled(true);
         botonProbarLetra.setEnabled(true);
     }
 
-    private void actualizarEstado(JuegoAhorcadosBase juego) {
+    private void actualizarEstado(JuegoAhorcadoBase juego) {
         areaJuego.setText("Intentos restantes: " + juego.intentos + "\n" + juego.palabraActual);
         if (juego.hasGanado()) {
             areaJuego.append("\n¡Felicidades! Has ganado.");
