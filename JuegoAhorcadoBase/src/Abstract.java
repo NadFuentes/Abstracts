@@ -6,7 +6,8 @@
 /**
  *
  * @author chung
- */import javax.swing.*;
+ */
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,7 +43,6 @@ public class Abstract extends JFrame {
         botonProbarLetra = new JButton("Probar Letra");
         botonProbarLetra.setEnabled(false);
 
-        // Acción para el juego fijo
         botonFijo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,7 +51,7 @@ public class Abstract extends JFrame {
             }
         });
 
-        // Acción para el juego al azar
+        
         botonAzar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,7 +61,7 @@ public class Abstract extends JFrame {
             }
         });
 
-        // Acción para probar letras
+        
         botonProbarLetra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
