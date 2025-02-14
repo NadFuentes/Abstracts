@@ -8,5 +8,6 @@
  * @author DELL
  */
 public class AdminPalabrasSecretas {
-    
+     private list<String> palabrasSecretas:
+     
 }
