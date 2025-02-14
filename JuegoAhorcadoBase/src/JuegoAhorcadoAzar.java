@@ -7,6 +7,6 @@
  *
  * @author chung
  */
-public class JuegoAhorcadoAzar {
+public class JuegoAhorcadoAzar extends JuegoAhorcadosBase{
     
 }
