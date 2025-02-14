@@ -7,12 +7,13 @@
  *
  * @author Nadiesda Fuentes
  */
+import java.util.Scanner;
+
 public abstract class JuegoAhorcadoBase implements JuegoAhorcado { 
     protected String palabraSecreta;
     protected StringBuilder palabraActual;
     protected int intentos;
 
-    // Constructor
     public JuegoAhorcadoBase() {
         this.intentos = 6; 
         this.palabraActual = new StringBuilder(); 
