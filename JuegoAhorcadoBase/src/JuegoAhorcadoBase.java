@@ -19,20 +19,62 @@ public abstract class JuegoAhorcadoBase implements JuegoAhorcado {
         this.palabraActual = new StringBuilder(); 
     }
 
-    // Método para inicializar la palabra secreta
-   
     public abstract void inicializarPalabraSecreta();
-
-    // Método para jugar (se implementará en la clase concreta)
-
     public abstract void jugar();
-
-    // Método abstracto para actualizar la palabra actual
     protected abstract void actualizarPalabraActual(char letra);
-
-    // Método abstracto para verificar si la letra está en la palabra secreta
     protected abstract boolean verificarLetra(char letra);
-
-    // Método abstracto para verificar si el jugador ha ganado
     protected abstract boolean hasGanado();
+    
+    public static class JuegoAhoracadoConcreto extends JuegoAhorcadoBase{
+         public void inicializarPalbraSecreta(){
+             Scanner scanner = new Scanner(System.in);
+             System.out.print("JUgador 1, ingresa la palabra secreta: ");
+             this.palabraSecreta = scanner.nextLine().toUpperCase();
+             this.palabraActual = new StringBuilder("_".repeat(palabraSecreta.length()));
+             
+             System.out.print("\\033[H\\033[2J");
+             System.out.flush();
+         }
+         
+         public void jugar(){
+             Scanner scanner = new Scanner(System.in);
+             
+              while (intentos > 0 && !hasGanado()) {
+                System.out.println("Palabra: " + palabraActual);
+                System.out.print("Jugador 2, ingresa una letra: ");
+                char letra = scanner.next().toUpperCase().charAt(0);
+
+                if (verificarLetra(letra)) {
+                    actualizarPalabraActual(letra);
+                } else {
+                    intentos--;
+                    System.out.println("Letra incorrecta. Intentos restantes: " + intentos);
+                }
+            }
+              if (hasGanado()) {
+                System.out.println("¡Felicidades! Has adivinado la palabra: " + palabraSecreta);
+            } else {
+                System.out.println("Game Over. La palabra era: " + palabraSecreta);
+            }
+
+            scanner.close();
+         }
+         
+          protected void actualizarPalabraActual(char letra) {
+            for (int i = 0; i < palabraSecreta.length(); i++) {
+                if (palabraSecreta.charAt(i) == letra) {
+                    palabraActual.setCharAt(i, letra);
+                }
+            }
+        }
+          
+           protected boolean verificarLetra(char letra) {
+            return palabraSecreta.indexOf(letra) != -1;
+        }
+           
+         protected boolean hasGanado() {
+            return palabraActual.toString().equals(palabraSecreta);
+        }
+          
+    }
 }
