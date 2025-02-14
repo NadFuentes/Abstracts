@@ -11,3 +11,12 @@ public interface JuegoAhorcado{
     void inicializarPalabraSecreta();
     void jugar();
 }
+public abstract class JuegoAhorcadosBase implements JuegoAhorcados{
+    protected String palabraSecreta;
+    protected StringBuilder palabraActual;
+    protected int instentos;
+    
+    public JuegosAhorcadosBase(){
+        this.intentos = 5;
+    }
+}
