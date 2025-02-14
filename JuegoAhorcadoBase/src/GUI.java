@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Abstract extends JFrame {
+public class GUI extends JFrame {
     private AdminPalabrasSecretas admin;
     private JuegoAhorcadoFijo juegoFijo;
     private JuegoAhorcadoAzar juegoAzar;
@@ -20,7 +20,7 @@ public class Abstract extends JFrame {
     private JTextField campoLetra;
     private JButton botonProbarLetra;
 
-    public abstract() {
+    public GUI() {
         setTitle("Juego del Ahorcado");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

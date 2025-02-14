@@ -7,7 +7,7 @@
  *
  * @author Nadiesda Fuentes
  */
-abstract class JuegoAhorcadosBase implements JuegoAhorcados{
+abstract class JuegoAhorcadosBase implements JuegoAhorcado{
     protected String palabraSecreta;
     protected StringBuilder palabraActual;
     protected int intentos;
