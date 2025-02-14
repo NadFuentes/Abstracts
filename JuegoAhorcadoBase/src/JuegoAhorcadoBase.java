@@ -25,8 +25,8 @@ public abstract class JuegoAhorcadoBase implements JuegoAhorcado {
     protected abstract boolean verificarLetra(char letra);
     protected abstract boolean hasGanado();
     
-    public static class JuegoAhoracadoConcreto extends JuegoAhorcadoBase{
-         public void inicializarPalbraSecreta(){
+    public static class JuegoAhorcadoConcreto extends JuegoAhorcadoBase{
+         public void inicializarPalabraSecreta(){
              Scanner scanner = new Scanner(System.in);
              System.out.print("JUgador 1, ingresa la palabra secreta: ");
              this.palabraSecreta = scanner.nextLine().toUpperCase();
@@ -78,3 +78,4 @@ public abstract class JuegoAhorcadoBase implements JuegoAhorcado {
           
     }
 }
+
